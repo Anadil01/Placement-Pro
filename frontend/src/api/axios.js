@@ -1,22 +1,18 @@
 import axios from 'axios';
 
-// --- ADD THESE 3 LINES ---
-console.log("--------------------");
-console.log("DEBUG: ENV VAR IS:", import.meta.env.VITE_API_URL);
-console.log("--------------------");
-// -------------------------
-
+// ⚠️ DIRECT LINK - NO VARIABLES
+// This guarantees your live site talks to your live backend.
 const api = axios.create({
-    baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000/api',
+  baseURL: 'https://placement-pro-api.vercel.app/api', 
 });
 
-// INTERCEPTOR: Automatically add Token to every request
+// Add Token to every request
 api.interceptors.request.use((config) => {
-    const token = localStorage.getItem('token');
-    if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-    }
-    return config;
+  const token = localStorage.getItem('token');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
 });
 
 export default api;
