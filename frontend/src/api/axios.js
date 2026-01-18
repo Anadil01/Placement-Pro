@@ -3,7 +3,7 @@ import axios from 'axios';
 // ⚠️ DIRECT LINK - NO VARIABLES
 // This guarantees your live site talks to your live backend.
 const api = axios.create({
-  baseURL: 'https://placement-pro-api.vercel.app/api', 
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:8000/api',
 });
 
 // Add Token to every request
