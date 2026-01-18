@@ -1,5 +1,11 @@
 import axios from 'axios';
 
+// --- ADD THESE 3 LINES ---
+console.log("--------------------");
+console.log("DEBUG: ENV VAR IS:", import.meta.env.VITE_API_URL);
+console.log("--------------------");
+// -------------------------
+
 const api = axios.create({
     baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8000/api',
 });
